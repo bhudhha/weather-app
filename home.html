@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Roboto&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+   <style>
+       body{
+
+padding: 0;
+box-sizing: border-box;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #d3dde6;
+}
+.mob{
+width: 325px;
+height: 555px;
+border: 2px solid rgb(233, 224, 224);
+border-radius: 10px;
+box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+z-index: 1;
+background: linear-gradient(rgb(221, 219, 115),rgb(216, 216, 137),rgb(224, 220, 220),white);
+}
+.find{
+margin: 0;
+}
+.up{
+width: 325px;
+height: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+.location{
+font-family: 'Noto Sans JP', sans-serif;
+margin-top: 40px;
+color: white;
+letter-spacing: 1px;
+}
+.mid{
+margin-top: 170px;
+position: relative;
+}
+.unit{
+color: rgb(206, 196, 178);
+}
+#deg{
+font-size: 20px;
+top:10px;
+left: 55px;
+position: absolute;
+
+}
+.temp{
+font-size: 50px;
+display: inline;
+font-family: 'Noto Sans JP', sans-serif;
+}
+.temptext{
+margin-right: 10px;
+display: inline;
+float:right;
+font-size: 30px;
+font-family: 'Noto Sans JP', sans-serif;
+}
+.content{
+margin-bottom: 3px;
+}
+.day{
+width: 200px;
+
+display: inline;
+float: left;
+
+}
+#date{
+display: inline;
+}
+.minmax{
+width: 100px;
+
+display: inline;
+float: right;
+}
+.container{
+margin: 0;
+width: 325px;
+height: 200px;
+/* background-color: red; */
+display: flex;
+flex-direction: column;
+align-content: space-around;
+}
+.level1{
+display: flex;
+justify-content: space-around;
+}
+.one{
+height: 100px;
+width: 100px;
+margin-top: 3px;
+box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+}
+.image{
+width: 100px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.value{
+width: 100px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+
+}.name{
+width: 100px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.f{
+    position: absolute;
+    top: -5px;
+    left: 50px;
+}
+   </style>
+    
+</head>
+
+<body>
+    <div class="mob">
+        <div class="up">
+            <h2 class="location"><i class="fas fa-street-view"></i>{%location%},{%country%} </h2>
+            <p class="find"><i class="fas fa-search-location"></i> lon {%lon%} : lat {%lat%}</p>
+        </div>
+        <div class="mid">
+            <div class="temp"><span>{%tempVal%} </span><span class="unit"><sup id="deg">o</sup>C</span></div>
+
+            <div class="temptext">
+               
+                {%sunny%}
+            </div>
+        </div>
+        <div class="content">
+            <div class="day">
+                <p id="date"></p>
+                <span class="hours"></span>:<span class="mins"></span>:<span class="s"></span>
+            </div>
+            <div class="minmax">
+                <span>{%tempminVal%}<sup>o</sup>C</span> / <span>{%tempmaxVal%}<sup>o</sup>C</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="level1">
+                <div class="one">
+                   <div class="image"><i class="fas fa-tint"></i></div>
+                   <div class="value">{%humidity%}%</div>
+                   <div class="name">Humidity</div>
+                </div>
+                <div class="one">
+                    <div class="image"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="value">{%presure%} hPa</div>
+                    <div class="name">pressure</div>
+                 </div>
+                 <div class="one">
+                    <div class="image"></div>
+                    <div class="value">{%sunrise%}</div>
+                    <div class="name">Sunrise</div>
+                 </div>
+               
+            </div>
+            <div class="level1">
+                <div class="one">
+                    <div class="image"><i class="fas fa-thermometer-half"></i></div>
+                    <div class="value">{%felt%} <sub class="f">o</sub>   C</div>
+                    <div class="name">tempture felt</div>
+                 </div>
+                 <div class="one">
+                    <div class="image"><i class="fas fa-wind"></i></div>
+                    <div class="value">{%visibility%}m</div>
+                    <div class="name">visibility</div>
+                 </div>
+                 <div class="one">
+                    <div class="image"></div>
+                    <div class="value">{%sunset%}</div>
+                    <div class="name">Sunset</div>
+                 </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        const curDate=document.getElementById('date');
+const now=new Date()
+var inc=1000;
+clock();
+function clock(){
+    const date =new Date()
+    const hours=((date.getHours()+11)%12+1);
+    const minutes=date.getMinutes();
+    const seconds=date.getSeconds();
+    const h=(hours<10)?"0"+hours:hours;
+    const m=(minutes<10)?"0"+minutes:minutes;
+    const s=(seconds<10)?"0"+seconds:seconds;
+    document.querySelector('.hours').innerHTML=h;
+    document.querySelector('.mins').innerHTML=m;
+    document.querySelector('.s').innerHTML=s;
+   
+}
+setInterval(clock,inc);
+const full = () => {
+   day = [
+       "Sunady",
+       "Monday",
+       "Tuesday",
+       "Wednesday",
+       "Thursday",
+       "Friday",
+       "Saturady"
+   ]
+   month=["Jan","Feb","Mar","Apr","May","June","Jul","Aug","Sep","Oct","Nov","Dec"]
+   const d = day[now.getDay()]
+   const date=now.getDate();
+   const m=month[now.getMonth()+1];
+   console.log(d);
+   console.log(date);
+   console.log(m);
+    curDate.innerHTML=`${d} | ${date}${m} | `
+   
+}
+full();
+    </script>
+</body>
+
+</html>
